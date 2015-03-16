@@ -26,6 +26,8 @@ public class WordBreak{
 	}
 	
 	public static boolean wordBreak(String s, Set<String> dict) {
+		//for bad end situation	
+		if(sameElement(s, dict) == false){return false;}
 		int len = s.length();
 		//null string
 		if(len==0) {return false;}
@@ -54,4 +56,17 @@ public class WordBreak{
 		return false;
 	}	
 
+	public static boolean sameElement(String s, Set<String> dict) {
+		Set<String> s1 = new HashSet<String>(Arrays.asList(s.split("")));
+		String d="";
+		for(String e:dict){
+			d = d+e;
+		}
+		Set<String> s2 = new HashSet<String>(Arrays.asList(d.split("")));
+		if(s1.equals(s2)){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }
